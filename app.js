@@ -61,6 +61,12 @@ function createTaskElement(task) {
   taskText.textContent = `${task.text} - ${task.time}`;
   taskText.className = task.completed ? "completed" : "";
 
+  const editButton = document.createElement("button");
+  editButton.textContent = "Edytuj";
+  editButton.addEventListener("click", function () {
+    editTask(task);
+  });
+
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Usuń";
   deleteButton.addEventListener("click", function () {
@@ -69,6 +75,7 @@ function createTaskElement(task) {
 
   taskElement.appendChild(checkbox);
   taskElement.appendChild(taskText);
+  taskElement.appendChild(editButton);
   taskElement.appendChild(deleteButton);
 
   taskList.appendChild(taskElement);
@@ -121,4 +128,27 @@ function deleteTask(task) {
   localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
   loadTasks();
+}
+
+function editTask(task) {
+  const newText = prompt("Edytuj treść zadania:", task.text);
+  const newTime = prompt("Edytuj godzinę zadania:", task.time);
+
+  if (newText !== null && newTime !== null) {
+    task.text = newText.trim();
+    task.time = newTime.trim();
+
+    // Pobieranie zadań z LocalStorage
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    // Aktualizacja zadania w LocalStorage
+    const updatedTasks = tasks.map((t) =>
+      t.timestamp === task.timestamp ? task : t
+    );
+
+    // Zapisywanie zaktualizowanych zadań do LocalStorage
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+    loadTasks();
+  }
 }
