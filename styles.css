@@ -13,6 +13,7 @@ body {
   box-shadow: 0 0 43px 2px rgba(0, 0, 0, 0.8);
   border-radius: 20px;
   border: solid 3px rgba(255, 255, 255, 0.9);
+  overflow: hidden;
 }
 
 h1 {
@@ -37,6 +38,7 @@ h1 {
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  overflow-wrap: break-word; /* Zawijanie tekstu, gdy osiągnie koniec kontenera */
 }
 
 .completed {
