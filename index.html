@@ -9,11 +9,20 @@
   <body>
     <div class="container">
       <h1>Task Manager</h1>
+      <div id="sort-options">
+        <button onclick="sortTasksByTime('asc')">
+          Sortuj od najniższej godziny
+        </button>
+        <button onclick="sortTasksByTime('desc')">
+          Sortuj od najwyższej godziny
+        </button>
+      </div>
       <div id="task-list">
         <!-- Lista zadań będzie tutaj -->
       </div>
       <div id="add-task-form">
         <input type="text" id="task-input" placeholder="Dodaj nowe zadanie" />
+        <input type="time" id="task-time" required />
         <button onclick="addTask()">Dodaj</button>
       </div>
     </div>
