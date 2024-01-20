@@ -2,7 +2,7 @@ body {
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background: linear-gradient(80deg, rgb(51, 141, 141), rgb(78, 76, 226));
 }
 
 .container {
@@ -10,7 +10,9 @@ body {
   margin: 20px auto;
   background-color: #fff;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 43px 2px rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  border: solid 3px rgba(255, 255, 255, 0.9);
 }
 
 h1 {
