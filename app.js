@@ -6,10 +6,8 @@ function loadTasks() {
   const taskList = document.getElementById("task-list");
   taskList.innerHTML = "";
 
-  // Pobieranie zadań z LocalStorage
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  // Sortowanie zadań według godziny dodania (od najniższej do najwyższej)
   tasks.sort((a, b) => a.time.localeCompare(b.time));
 
   tasks.forEach(function (task) {
@@ -30,12 +28,10 @@ function addTask() {
       time: taskTime,
     };
 
-    // Pobieranie zadań z LocalStorage
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
     tasks.push(newTask);
 
-    // Zapisywanie zadań do LocalStorage
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
     createTaskElement(newTask);
@@ -85,10 +81,8 @@ function sortTasksByTime(order) {
   const taskList = document.getElementById("task-list");
   taskList.innerHTML = "";
 
-  // Pobieranie zadań z LocalStorage
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  // Sortowanie zadań według godziny dodania
   tasks.sort((a, b) => {
     if (order === "asc") {
       return a.time.localeCompare(b.time);
@@ -105,26 +99,20 @@ function sortTasksByTime(order) {
 function toggleTaskCompletion(task) {
   task.completed = !task.completed;
 
-  // Pobieranie zadań z LocalStorage
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  // Aktualizacja statusu ukończenia zadania w LocalStorage
   const updatedTasks = tasks.map((t) => (t.text === task.text ? task : t));
 
-  // Zapisywanie zaktualizowanych zadań do LocalStorage
   localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
   loadTasks();
 }
 
 function deleteTask(task) {
-  // Pobieranie zadań z LocalStorage
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  // Usuwanie zadania z LocalStorage
   const updatedTasks = tasks.filter((t) => t.text !== task.text);
 
-  // Zapisywanie zaktualizowanych zadań do LocalStorage
   localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
   loadTasks();
@@ -138,15 +126,12 @@ function editTask(task) {
     task.text = newText.trim();
     task.time = newTime.trim();
 
-    // Pobieranie zadań z LocalStorage
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-    // Aktualizacja zadania w LocalStorage
     const updatedTasks = tasks.map((t) =>
       t.timestamp === task.timestamp ? task : t
     );
 
-    // Zapisywanie zaktualizowanych zadań do LocalStorage
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 
     loadTasks();

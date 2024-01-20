@@ -23,8 +23,8 @@ h1 {
   margin-top: 20px;
   text-align: center;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* Trzy kolumny, jedna dla każdego elementu w formularzu */
-  gap: 10px; /* Odstęp między elementami */
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
 }
 
 #task-list {
@@ -33,7 +33,7 @@ h1 {
 
 .task {
   display: grid;
-  grid-template-columns: auto 1fr 70px 70px; /* Cztery kolumny, jedna dla każdego elementu zadania */
+  grid-template-columns: auto 1fr 70px 70px;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
